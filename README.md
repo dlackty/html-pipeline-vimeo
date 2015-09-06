@@ -17,7 +17,7 @@ You can add `HTML::Pipeline::VimeoFilter` into your pipeline like this:
 ```ruby
 pipeline = HTML::Pipeline.new [
   HTML::Pipeline::VimeoFilter,
-  HTML::Pipeline::MarkdownFilter // or any other filters
+  HTML::Pipeline::MarkdownFilter # or any other filters
 ]
 result = pipeline.call(text)
 ```
