@@ -18,4 +18,16 @@ describe HTML::Pipeline::VimeoFilter do
   it "doens't transform HTML link" do
     expect(described_class.to_html(html_with_vimeo_url)).to eq(html_with_vimeo_url)
   end
+
+  it "does transform link wrapped in a <div>" do
+    expect(described_class.to_html("<div>#{vimeo_url}</div>")).to eq(
+      %(<div><iframe src="//player.vimeo.com/video/137266757?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe></div>)
+    )
+  end
+
+  it "does transform link after <br>" do
+    expect(described_class.to_html("<br>#{vimeo_url}")).to eq(
+      %(<br><iframe src="//player.vimeo.com/video/137266757?title=0&byline=0&portrait=0" width="440" height="248" frameborder="0"></iframe>)
+    )
+  end
 end
